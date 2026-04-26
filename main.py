@@ -37,12 +37,12 @@ If you want to evaluate an expression from the console,
 you need to enclose the mathematical expression in quotes
 and then specify the variables as a dictionary: `$i=val`
 if the variables exist in the expression.
-For example: python3 main.py "$0*$1 + 1 - 12 / 4" $0=10 $1=17
+For example: python3 main.py '$0*$1 + 1 - 12 / 4' '$0=10' '$1=17'
 Then you will get the result of the calculation -> result: 168
 
 """
 
-from ExeptionHandler import ExpressionHandler
+from ExpressionHandler import ExpressionHandler
 import sys
 
 def toDict(array):
@@ -55,10 +55,21 @@ def toDict(array):
 
 def main():
 
+    baseExpression = "$0*$0 + 2*$0 + 1"
+    baseVar = {
+        "$0": 1
+    }
+
     args = sys.argv[1:]
-    expression = args[0]
-    variable = toDict(args[1:])
-    print(ExpressionHandler(expression).expr().evaluate(variable))
+    if not args:
+        print("You start the program without parameters")
+        print(f"You will get the base expression: {baseExpression} with arguments: " +
+              f"{[f"{k}={v}" for k, v in baseVar.items()]}")
+        print("The result: ", str(ExpressionHandler(baseExpression).expr().evaluate(baseVar)))
+    else:
+        expression = args[0]
+        variable = toDict(args[1:])
+        print(ExpressionHandler(expression).expr().evaluate(variable))
 
 
 if __name__ == "__main__":

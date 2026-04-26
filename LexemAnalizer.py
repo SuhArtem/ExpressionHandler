@@ -80,13 +80,12 @@ class LexemeAnalyzer:
                     i += 1
                     continue
             if '0' <= self.string[i] <= '9':
-                st = ''
+                number = []
                 k = i
                 while k < len(self.string) and '0' <= self.string[k] <= '9':
-                    st += self.string[k]
+                    number.append(self.string[k])
                     k += 1
-
-                lexemes.append((Lexeme(LexemeType.NUMBER, st)))
+                lexemes.append((Lexeme(LexemeType.NUMBER, ''.join(number))))
                 i = k - 1
             else:
                 if self.string[i] != ' ':
