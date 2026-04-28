@@ -39,7 +39,6 @@ and then specify the variables as a dictionary: `$i=val`
 if the variables exist in the expression.
 For example: python3 main.py '$0*$1 + 1 - 12 / 4' '$0=10' '$1=17'
 Then you will get the result of the calculation -> result: 168
-
 """
 
 from ExpressionHandler import ExpressionHandler
