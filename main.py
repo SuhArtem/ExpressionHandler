@@ -55,9 +55,9 @@ def toDict(array):
 
 def main():
 
-    baseExpression = "$0*$0 + 2*$0 + 1"
+    baseExpression = "$0*$0 + 2*$0 + 1" # x^2 + 2*x + 1
     baseVar = {
-        "$0": 1
+        "$0": 1 # x = 1
     }
 
     args = sys.argv[1:]
